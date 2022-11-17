@@ -1,0 +1,17 @@
+name: Sync Repository to AWS CodeCommit
+
+on:
+  push:
+    branches: [ "**" ]
+
+jobs:
+  sync-to-aws-codecommit:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - name: Sync to AWS CodeCommit
+        uses: shubhdarlinge/sync-repository-to-aws-codecommit@v2
+        with:
+          role-to-assume: arn:aws:iam::175622974642:role/GitHubRepositorySynchronizer
